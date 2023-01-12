@@ -50,30 +50,50 @@ PlayerSec:AddButton({
 	end    
 })
 
-PlayerSec:AddSlider({
+local sps = PlayerSec:AddSlider({
 	Name = "Speed Slider (defaut is 16)",
 	Min = 1,
-	Max = 60,
+	Max = 100,
 	Default = 16,
 	Color = Color3.fromRGB(255,255,255),
 	Increment = 1,
 	ValueName = "Studs",
 	Callback = function(s)
+		game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = s
 		print(s)
 	end    
 })
 
-PlayerSec:AddToggle({
-	Name = "Toggle Speed",
-	Default = false,
-	Callback = function(ToggleSpeed)
-		print(ToggleSpeed)
-        if ToggleSpeed == true then
-            game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = s
-        else
-            game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 16
-        end
+PlayerSec:AddButton({
+	Name = "Reset Speed",
+	Callback = function()
+      		print("Speed Reseted")
+			sps:Set(16)
+			game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 16
+  	end    
+})
+
+local jps = PlayerSec:AddSlider({
+	Name = "JumpPower Slider (defaut is 50)",
+	Min = 1,
+	Max = 200,
+	Default = 50,
+	Color = Color3.fromRGB(255,255,255),
+	Increment = 1,
+	ValueName = "Studs",
+	Callback = function(j)
+		game.Players.LocalPlayer.Character.Humanoid.JumpPower = j
+		print(j)
 	end    
+})
+
+PlayerSec:AddButton({
+	Name = "Reset JumpPower",
+	Callback = function()
+      		print("JumpPower Reseted")
+			jps:Set(50)
+			game.Players.LocalPlayer.Character.Humanoid.JumpPower = 50
+  	end    
 })
 
 --Tooltab
@@ -144,6 +164,13 @@ SkyboxSec:AddButton({
 
 CreditsTab:AddLabel("Hub made by xavipt1#5952, some scripts are made by others")
 
+CreditsTab:AddButton({
+	Name = "Destroy Xavium",
+	Callback = function()
+      		print("destroyed")
+			OrionLib:Destroy()
+  	end    
+})
 
 
 --Init
